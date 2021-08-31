@@ -60,9 +60,26 @@
 
       async function getFriendship() {}
 
-      async function sendMsg() {}
+      async function sendMsg() {
+        if (liff.getContext().type !== "none") {
+          await liff.sendMessages([
+            {
+              type: "sticker",
+              stickerId: 1,
+              packageId: 1,
+            },
+          ])
+          alert("Message sent")
+        }
+      }
 
-      function getContext() {}
+      function getContext() {
+        document.getElementById("type").append(liff.getContext().type)
+        document.getElementById("viewType").append(liff.getContext().viewType)
+        document.getElementById("utouID").append(liff.getContext().utouId)
+        document.getElementById("roomId").append(liff.getContext().roomId)
+        document.getElementById("groupId").append(liff.getContext().groupId)
+      }
 
       async function getUserProfile() {
         const profile = await liff.getProfile()
@@ -94,16 +111,13 @@
         await liff.init({ liffId: "1656372478-LdJE918z" }).catch((err) => {
           throw err
         })
-        if (liff.isLoggedIn()) {
-          let getProfile = await liff.getProfile()
-          console.log(getProfile)
-        } else {
-          liff.login()
+        if (!liff.isLoggedIn()) {
+          await liff.login()
         }
 
         getEnvironment()
         getUserProfile()
-        // getContext()
+        getContext()
         // getFriendship()
         // createUniversalLink()
       }
