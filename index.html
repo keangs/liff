@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <!-- https://medium.com/incubate-co-th/%E0%B8%AA%E0%B8%A3%E0%B8%B8%E0%B8%9B%E0%B8%9A%E0%B8%97%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87-liff-%E0%B8%88%E0%B8%B2%E0%B8%81-line-x-skooldio-part-2-3d0cc782886a -->
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -7,7 +8,10 @@
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
     />
     <title>My LIFF app</title>
-    <link rel="stylesheet" href="css/style.css" media="all" />
+    <!-- <link rel="stylesheet" href="css/style.css" media="all" /> -->
+    <script>
+      document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime() + '">')
+    </script>
   </head>
   <body>
     <p id="os"><b>OS:</b></p>
@@ -39,26 +43,60 @@
     <button id="btnLogOut" onclick="logOut()">Log Out</button>
     <button id="btnClose" onclick="closed()">Close</button>
 
-    <!-- <script src="js/vconsole.min.js"></script> -->
-    <!-- <script>
-    var vConsole = new VConsole()
-    console.log("Hello World!")
-  </script> -->
+    <script src="js/vconsole.min.js"></script>
+    <script>
+      var vConsole = new VConsole()
+      console.log("Hello World!")
+    </script>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       function createUniversalLink() {}
 
-      async function shareMsg() {}
+      async function shareMsg() {
+        await liff.shareTargetPicker([
+          {
+            type: "text",
+            text: "This message was sent by ShareTargetPicker",
+          },
+        ])
+      }
 
-      function logOut() {}
+      function logOut() {
+        liff.logout()
+        window.location.reload()
+      }
 
-      function closed() {}
+      function closed() {
+        liff.closeWindow()
+      }
 
-      async function scanCode() {}
+      async function scanCode() {
+        const result = await liff.scanCode()
 
-      function openWindow() {}
+        lilff.openWindow({
+          url: result.value,
+          external: false,
+        })
 
-      async function getFriendship() {}
+        document.getElementById("scanCode").append(result.value)
+      }
+
+      function openWindow() {
+        liff.openWindow({
+          url: "https://line.me",
+          external: true,
+        })
+      }
+
+      async function getFriendship() {
+        const friend = await liff.getFriendship()
+        document.getElementById("friendship").append(friend.friendFlag)
+        if (!friend.friendFlag) {
+          if (confirm("yoy're not in bot's friend list. Wanna add friend now?")) {
+            window.location = "https://line.me/R/ti/p/@844snipc"
+          }
+        }
+      }
 
       async function sendMsg() {
         if (liff.getContext().type !== "none") {
@@ -108,18 +146,22 @@
 
       async function main() {
         // alert("LINE Developers x Skooldio")
+        liff.ready.then(() => {
+          if (liff.isLoggedIn()) {
+            getEnvironment()
+            getUserProfile()
+            getContext()
+            getFriendship()
+            // createUniversalLink()
+          } else {
+            await liff.login({ redirectUri: "https://keangs.github.io/liff/path" })
+          }
+        })
+
+
         await liff.init({ liffId: "1656372478-LdJE918z" }).catch((err) => {
           throw err
         })
-        if (!liff.isLoggedIn()) {
-          await liff.login()
-        }
-
-        getEnvironment()
-        getUserProfile()
-        getContext()
-        // getFriendship()
-        // createUniversalLink()
       }
       main()
     </script>
