@@ -146,7 +146,7 @@
 
       async function main() {
         // alert("LINE Developers x Skooldio")
-        liff.ready.then(() => {
+        liff.ready.then(async () => {
           if (liff.isLoggedIn()) {
             getEnvironment()
             getUserProfile()
@@ -157,7 +157,6 @@
             await liff.login({ redirectUri: "https://keangs.github.io/liff/path" })
           }
         })
-
 
         await liff.init({ liffId: "1656372478-LdJE918z" }).catch((err) => {
           throw err
