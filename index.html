@@ -91,7 +91,16 @@
 
       async function main() {
         // alert("LINE Developers x Skooldio")
-        await liff.init({ liffId: "1656372478-LdJE918z" })
+        await liff.init({ liffId: "1656372478-LdJE918z" }).catch((err) => {
+          throw err
+        })
+        if (liff.isLoggedIn()) {
+          let getProfile = await liff.getProfile()
+          console.log(getProfile)
+        } else {
+          liff.login()
+        }
+
         getEnvironment()
         getUserProfile()
         // getContext()
