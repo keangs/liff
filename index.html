@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <!-- https://medium.com/incubate-co-th/%E0%B8%AA%E0%B8%A3%E0%B8%B8%E0%B8%9B%E0%B8%9A%E0%B8%97%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87-liff-%E0%B8%88%E0%B8%B2%E0%B8%81-line-x-skooldio-part-2-3d0cc782886a -->
+<html lang>
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -8,32 +7,37 @@
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
     />
     <title>My LIFF app</title>
-    <!-- <link rel="stylesheet" href="css/style.css" media="all" /> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
     <script>
       document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime() + '">')
     </script>
   </head>
   <body>
-    <p id="os"><b>OS:</b></p>
-    <p id="language"><b>Language:</b></p>
-    <p id="version"><b>Version:</b></p>
-    <p id="isInClient"><b>isInClient:</b></p>
-    <p id="accessToken"><b>AccessToken:</b></p>
-    <img id="pictureUrl" />
-    <p id="userId"><b>userId:</b></p>
-    <p id="displayName"><b>displayName:</b></p>
-    <p id="statusMessage"><b>statusMessage:</b></p>
-    <p id="decodedIDToken"><b>email:</b></p>
-    <p id="type"><b>type:</b></p>
-    <p id="viewType"><b>viewType:</b></p>
-    <p id="utouId"><b>utouId:</b></p>
-    <p id="roomId"><b>roomId:</b></p>
-    <p id="groupId"><b>groupId:</b></p>
-    <p id="friendship"><b>isFriendship:</b></p>
-    <p id="scanCode"><b>Code:</b></p>
-    <p id="isLoggedIn"><b>isLoggedIn:</b></p>
-    <p id="universalLink1"><b>Universal Link:</b></p>
-    <p id="universalLink2"><b>Universal Link with Query params:</b></p>
+    <p id="os"><strong>OS:</strong></p>
+    <p id="language"><strong>Language:</strong></p>
+    <p id="version"><strong>Version:</strong></p>
+    <p id="isInClient"><strong>isInClient:</strong></p>
+    <p id="accessToken"><strong>AccessToken:</strong></p>
+    <img id="pictureUrl" alt />
+    <p id="userId"><strong>userId:</strong></p>
+    <p id="displayName"><strong>displayName:</strong></p>
+    <p id="statusMessage"><strong>statusMessage:</strong></p>
+    <p id="decodedIDToken"><strong>email:</strong></p>
+    <p id="type"><strong>type:</strong></p>
+    <p id="viewType"><strong>viewType:</strong></p>
+    <p id="utouId"><strong>utouId:</strong></p>
+    <p id="roomId"><strong>roomId:</strong></p>
+    <p id="groupId"><strong>groupId:</strong></p>
+    <p id="friendship"><strong>isFriendship:</strong></p>
+    <p id="scanCode"><strong>Code:</strong></p>
+    <p id="isLoggedIn"><strong>isLoggedIn:</strong></p>
+    <p id="universalLink1"><strong>Universal Link:</strong></p>
+    <p id="universalLink2"><strong>Universal Link with Query params:</strong></p>
     <p><a href="liff/path/?param=9">Link to Path</a></p>
 
     <button id="btnMsg" onclick="sendMsg()">Send Message</button>
@@ -44,6 +48,16 @@
     <button id="btnClose" onclick="closed()">Close</button>
 
     <script src="js/vconsole.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+      integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+      crossorigin="anonymous"
+    ></script>
     <script>
       var vConsole = new VConsole()
       console.log("Hello World!")
